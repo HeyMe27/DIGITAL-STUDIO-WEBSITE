@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Introduction from '@/components/Introduction'
 import Services from '@/components/Services'
-import Portfolio from '@/components/Portfolio'
+// import Portfolio from '@/components/Portfolio' // Hidden for now
 import Industries from '@/components/Industries'
 import Process from '@/components/Process'
 import About from '@/components/About'
@@ -29,7 +29,7 @@ export default function Home() {
         <Hero />
         <Introduction />
         <Services />
-        <Portfolio />
+        {/* <Portfolio /> */} {/* Hidden for now */}
         <Industries />
         <Process />
         <About />

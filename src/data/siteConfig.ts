@@ -7,11 +7,11 @@ export const siteConfig = {
   tagline: 'Digital Experiences That Move Businesses Forward',
   shortDescription: 'We design and develop websites, custom web applications, and intelligent business solutions.',
   
-  // Contact Information - Update with actual details
+  // Contact Information
   contact: {
-    email: 'hello@codeflowstudio.com', // Update with your email
-    phone: '+91 00000 00000', // Update with your phone
-    whatsapp: '+910000000000', // Update with your WhatsApp number (no spaces/dashes)
+    email: 'kshemanth27@gmail.com',
+    phone: '+91 96068 09964',
+    whatsapp: '919606809964', // WhatsApp number (no spaces/dashes, with country code)
     address: {
       city: 'Bengaluru',
       state: 'Karnataka',
@@ -34,7 +34,7 @@ export const siteConfig = {
   navigation: [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/#services' },
-    { name: 'Our Work', href: '/#work' },
+    // { name: 'Our Work', href: '/#work' }, // Hidden for now
     { name: 'Industries', href: '/#industries' },
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#contact' },
@@ -51,8 +51,8 @@ export const heroContent = {
   headline: 'Digital Experiences That Move Businesses Forward',
   subheadline: 'We design and develop websites, custom web applications, and intelligent business solutions that help companies connect with customers, simplify operations, and grow.',
   primaryCTA: {
-    text: 'Explore Our Work',
-    href: '/#work',
+    text: 'Explore Our Services',
+    href: '/#services',
   },
   secondaryCTA: {
     text: "Let's Talk",
