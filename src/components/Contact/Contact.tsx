@@ -136,9 +136,23 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="section-padding bg-primary-bg relative overflow-hidden"
+      className="section-padding bg-gradient-section relative overflow-hidden"
     >
-      <div className="container-custom">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+          className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-accent-teal/10 to-accent-blue/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], rotate: [0, -5, 0] }}
+          transition={{ duration: 25, repeat: Infinity }}
+          className="absolute -bottom-20 -left-20 w-96 h-96 bg-gradient-to-br from-accent-purple/10 to-accent-pink/10 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="container-custom relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -146,8 +160,20 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
           className="text-center mb-12"
         >
-          <span className="badge-teal mb-4">Get in Touch</span>
-          <h2 className="heading-display mb-4">Let's Discuss Your Project</h2>
+          <motion.span 
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="badge-pink mb-4"
+          >
+            <Mail className="w-3 h-3 mr-1" />
+            Get in Touch
+          </motion.span>
+          <h2 className="heading-display mb-4">
+            <span className="text-primary-dark">Let's </span>
+            <span className="text-gradient">Discuss</span>
+            <span className="text-primary-dark"> Your Project</span>
+          </h2>
           <p className="text-body-lg text-text-body max-w-2xl mx-auto">
             Tell us about your requirements and we'll get back to you within 24 hours.
           </p>
