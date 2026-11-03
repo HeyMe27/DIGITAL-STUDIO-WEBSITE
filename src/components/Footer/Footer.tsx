@@ -1,5 +1,5 @@
 import { siteConfig } from '@/data/siteConfig'
-import { Linkedin, Twitter, Instagram, Github, ArrowUp } from 'lucide-react'
+import { ArrowUp } from 'lucide-react'
 
 const footerLinks = {
   services: [
@@ -15,13 +15,6 @@ const footerLinks = {
     { name: 'Contact', href: '/#contact' },
   ],
 }
-
-const socialLinks = [
-  { icon: Linkedin, href: siteConfig.social.linkedin, label: 'LinkedIn' },
-  { icon: Twitter, href: siteConfig.social.twitter, label: 'Twitter' },
-  { icon: Instagram, href: siteConfig.social.instagram, label: 'Instagram' },
-  { icon: Github, href: siteConfig.social.github, label: 'GitHub' },
-]
 
 export default function Footer() {
   const handleNavClick = (href: string) => {
@@ -58,25 +51,9 @@ export default function Footer() {
               </div>
               <span>{siteConfig.brandName}</span>
             </a>
-            <p className="text-white/60 text-body-sm leading-relaxed mb-6">
+            <p className="text-white/60 text-body-sm leading-relaxed">
               {siteConfig.shortDescription}
             </p>
-
-            {/* Social Links */}
-            <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center hover:bg-accent-teal/20 transition-colors"
-                  aria-label={label}
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Services Column */}

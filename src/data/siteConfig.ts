@@ -3,13 +3,13 @@
 
 export const siteConfig = {
   // Brand
-  brandName: 'Codeflow Studio',
+  brandName: 'CodeCraft',
   tagline: 'Digital Experiences That Move Businesses Forward',
   shortDescription: 'We design and develop websites, custom web applications, and intelligent business solutions.',
   
   // Contact Information
   contact: {
-    email: 'kshemanth27@gmail.com',
+    email: 'codecraft.helo@gmail.com',
     phone: '+91 96068 09964',
     whatsapp: '919606809964', // WhatsApp number (no spaces/dashes, with country code)
     address: {
@@ -19,16 +19,8 @@ export const siteConfig = {
     },
   },
   
-  // Social Links - Update with actual profiles
-  social: {
-    linkedin: 'https://linkedin.com/company/codeflowstudio',
-    twitter: 'https://twitter.com/codeflowstudio',
-    instagram: 'https://instagram.com/codeflowstudio',
-    github: 'https://github.com/codeflowstudio',
-  },
-  
   // Domain - Update when you have your actual domain
-  domain: 'https://codeflowstudio.com',
+  domain: 'https://codecraftsolutions.in',
   
   // Navigation
   navigation: [

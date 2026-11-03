@@ -4,12 +4,14 @@ import { useScrollAnimation } from '@/hooks'
 import { Search, Map, Palette, Code, Rocket, Workflow } from 'lucide-react'
 
 const stepIcons = [Search, Map, Palette, Code, Rocket]
-const stepColors = [
-  { gradient: 'from-accent-teal to-accent-blue', glow: 'shadow-accent-teal/30', bg: 'bg-accent-teal/10' },
-  { gradient: 'from-accent-blue to-accent-purple', glow: 'shadow-accent-blue/30', bg: 'bg-accent-blue/10' },
-  { gradient: 'from-accent-purple to-accent-pink', glow: 'shadow-accent-purple/30', bg: 'bg-accent-purple/10' },
-  { gradient: 'from-accent-pink to-accent-orange', glow: 'shadow-accent-pink/30', bg: 'bg-accent-pink/10' },
-  { gradient: 'from-accent-orange to-accent-teal', glow: 'shadow-accent-orange/30', bg: 'bg-accent-orange/10' },
+
+// Using inline styles for reliable gradient rendering
+const stepStyles = [
+  { gradient: 'linear-gradient(135deg, #14B8A6, #3B82F6)', glow: 'rgba(20, 184, 166, 0.3)', bgLight: 'rgba(20, 184, 166, 0.1)' },
+  { gradient: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', glow: 'rgba(59, 130, 246, 0.3)', bgLight: 'rgba(59, 130, 246, 0.1)' },
+  { gradient: 'linear-gradient(135deg, #8B5CF6, #EC4899)', glow: 'rgba(139, 92, 246, 0.3)', bgLight: 'rgba(139, 92, 246, 0.1)' },
+  { gradient: 'linear-gradient(135deg, #EC4899, #F97316)', glow: 'rgba(236, 72, 153, 0.3)', bgLight: 'rgba(236, 72, 153, 0.1)' },
+  { gradient: 'linear-gradient(135deg, #F97316, #14B8A6)', glow: 'rgba(249, 115, 22, 0.3)', bgLight: 'rgba(249, 115, 22, 0.1)' },
 ]
 
 export default function Process() {
@@ -69,12 +71,13 @@ export default function Process() {
         {/* Process Timeline */}
         <div className="relative">
           {/* Connecting Line - Desktop with animated gradient */}
-          <div className="hidden lg:block absolute top-[80px] left-[10%] right-[10%] h-1 overflow-hidden rounded-full">
+          <div className="hidden lg:block absolute top-[80px] left-[10%] right-[10%] h-1 overflow-hidden rounded-full bg-gray-200">
             <motion.div
               initial={{ x: '-100%' }}
               animate={isInView ? { x: '0%' } : {}}
               transition={{ duration: 1.5, ease: 'easeOut' }}
-              className="h-full w-full bg-gradient-to-r from-accent-teal via-accent-blue via-accent-purple via-accent-pink to-accent-orange"
+              className="h-full w-full"
+              style={{ background: 'linear-gradient(90deg, #14B8A6, #3B82F6, #8B5CF6, #EC4899, #F97316)' }}
             />
           </div>
 
@@ -82,7 +85,7 @@ export default function Process() {
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
             {processSteps.map((step, index) => {
               const Icon = stepIcons[index]
-              const colors = stepColors[index]
+              const styles = stepStyles[index]
 
               return (
                 <motion.div
@@ -108,28 +111,41 @@ export default function Process() {
                         animate={isInView ? { scale: 1, rotate: 0 } : {}}
                         transition={{ delay: 0.4 + index * 0.15, type: 'spring' }}
                         whileHover={{ scale: 1.2, rotate: 10 }}
-                        className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center shadow-lg ${colors.glow} transition-all duration-300`}
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300"
+                        style={{ 
+                          background: styles.gradient,
+                          boxShadow: `0 10px 30px -10px ${styles.glow}`
+                        }}
                       >
                         <Icon className="w-7 h-7 text-white" />
                       </motion.div>
                     </div>
 
                     {/* Card Content */}
-                    <div className={`${colors.bg} rounded-3xl p-6 hover:bg-white hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-primary-dark/5`}>
+                    <div 
+                      className="rounded-3xl p-6 hover:bg-white hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-gray-100"
+                      style={{ backgroundColor: styles.bgLight }}
+                    >
                       {/* Number */}
-                      <motion.span 
-                        className={`text-5xl font-bold bg-gradient-to-br ${colors.gradient} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}
+                      <span 
+                        className="text-5xl font-bold opacity-20 group-hover:opacity-40 transition-opacity"
+                        style={{ 
+                          background: styles.gradient,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text'
+                        }}
                       >
                         {step.number}
-                      </motion.span>
+                      </span>
 
                       {/* Title */}
-                      <h3 className="text-xl font-bold text-primary-dark mb-3 group-hover:text-gradient transition-all">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
                         {step.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-text-body text-body-sm leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed">
                         {step.description}
                       </p>
                     </div>

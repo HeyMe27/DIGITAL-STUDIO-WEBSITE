@@ -8,10 +8,6 @@ import {
   Phone,
   MapPin,
   MessageCircle,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Github,
   CheckCircle,
   AlertCircle,
   Loader2,
@@ -124,13 +120,6 @@ export default function Contact() {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
   }
-
-  const socialLinks = [
-    { icon: Linkedin, href: siteConfig.social.linkedin, label: 'LinkedIn' },
-    { icon: Twitter, href: siteConfig.social.twitter, label: 'Twitter' },
-    { icon: Instagram, href: siteConfig.social.instagram, label: 'Instagram' },
-    { icon: Github, href: siteConfig.social.github, label: 'GitHub' },
-  ]
 
   return (
     <section
@@ -246,25 +235,6 @@ export default function Contact() {
                     {siteConfig.contact.address.city}, {siteConfig.contact.address.state}
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="text-sm font-medium text-text-body mb-4">Follow Us</h4>
-              <div className="flex gap-3">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-white border border-primary-dark/5 flex items-center justify-center hover:border-accent-teal/20 hover:bg-accent-teal/5 transition-all"
-                    aria-label={label}
-                  >
-                    <Icon className="w-4 h-4 text-primary-dark" />
-                  </a>
-                ))}
               </div>
             </div>
           </motion.div>
